@@ -1,4 +1,5 @@
 import { Schema, model } from 'mongoose';
+import { invitationSchema } from './userUtilities';
 import bcrypt from "bcrypt";
 
 
@@ -23,7 +24,13 @@ const userSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'Servers', // Referans edilen şemanın adı
   }],
+  friends: [{
+    type: Schema.Types.ObjectId,
+    ref: 'User', // Referans edilen şemanın adı
+  }],
+  invitations: [invitationSchema],
 });
+
 userSchema.pre("save", function (next) {
   if (!this.isModified("password")) {
     return next();

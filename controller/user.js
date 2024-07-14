@@ -87,13 +87,22 @@ export const getToken = async (name) => {
     console.log("Error occured during acessing the token");
   }
 }
+export const removeToken = async (name) => {
+  try {
+    await Token.findOneAndDelete({ name: name });
 
-  export const updateUser = async (props, key) => {
+    return existingToken.token;
+  } catch (error) {
+    console.log("Error occured during acessing the token");
+  }
+}
+
+  export const updateUser = async (key, content) => {
     try {
-      console.log(props)
+      
       await User.findByIdAndUpdate(
         key, // id of the User to update
-        { $push: { servers: props.server } }, // push the new server id to the servers array
+        content, // push the new server id to the servers array
         { new: true } // return the updated document
       );
       return Promise.resolve();
