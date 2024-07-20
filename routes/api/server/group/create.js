@@ -5,7 +5,7 @@ const createGroup =  async (req, res) => {
       const {id} = req.params
       const {name} = req.body
       
-      const groupInfo = await  updateServer({id, contents:{$push: { groups:{ name, channels: [] }}}})
+      const groupInfo = await  updateServer(id, {$push: { groups:{ name, channels: [] }}})
       
       res.status(200).json({groupInfo});
       return Promise.resolve();

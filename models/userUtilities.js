@@ -10,4 +10,8 @@ export const invitationSchema = new Schema({
       type: String,
       required: true,
     },
+    referenceId: {
+      type: Schema.Types.ObjectId,
+      required: true,
+    }
   });

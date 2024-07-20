@@ -1,5 +1,6 @@
 import { Schema, model } from 'mongoose';
 import { invitationSchema } from './userUtilities';
+import { chatSchema } from './serverUtilities';
 import bcrypt from "bcrypt";
 
 
@@ -26,9 +27,10 @@ const userSchema = new Schema({
   }],
   friends: [{
     type: Schema.Types.ObjectId,
-    ref: 'User', // Referans edilen şemanın adı
+    ref: 'Users', // Referans edilen şemanın adı
   }],
   invitations: [invitationSchema],
+  privateChats: [chatSchema]
 });
 
 userSchema.pre("save", function (next) {

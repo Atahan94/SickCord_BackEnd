@@ -6,8 +6,6 @@ const getAllServers =  async (req, res) => {
 
       await user.populate('servers').execPopulate();
 
-      console.log("user", user)
-
       res.status(200).json({res: [...user.servers]});
       return Promise.resolve();
     } catch (error) {

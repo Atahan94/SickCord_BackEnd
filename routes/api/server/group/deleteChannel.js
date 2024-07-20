@@ -18,11 +18,11 @@ const deleteChannel =  async (req, res) => {
         ]
       };
 
-      const groupInfo = await updateServer({
+      const groupInfo = await updateServer(
         id,
         contents,
         options
-      });
+      );
   
       
       res.status(200).json({groupInfo}); 

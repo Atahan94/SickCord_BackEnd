@@ -7,7 +7,7 @@ const editChannel =  async (req, res) => {
       
 
       console.log("ID", id, "name and type" , name, type)
-      const channelİnfo = await updateServer({ id, contents: { $set: { "channels.$[elem].name": name, "channels.$[elem].type": type } }, options: { arrayFilters: [{ "elem._id": channelID }] } });
+      const channelİnfo = await updateServer( id, { $set: { "channels.$[elem].name": name, "channels.$[elem].type": type } }, { arrayFilters: [{ "elem._id": channelID }] } );
       
       res.status(200).json({channelİnfo});
       return Promise.resolve();

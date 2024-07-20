@@ -25,22 +25,22 @@ export const createServer = async ({ name, owner}) => {
     return Promise.reject({ error });
   }
  }
-  export const updateServer = async ({id, contents, options ={}}) => {
+  export const updateServer = async (id, contents, options ={}) => {
   try {
-    console.log("Server Controller Update", id, contents )
+   
     await Server.findByIdAndUpdate(
       id, // id of the User to update
       contents , // push the new server id to the servers array
       { ...options}
     );
 
-    return Promise.resolve({
-      result: "sucessfully created a channel",
-    });
+    return Promise.resolve();
   } catch (error) {
     return Promise.reject({ error });
   }
  }
+
+ export const getServerById = (id) => Server.findById(id);
 
 
  

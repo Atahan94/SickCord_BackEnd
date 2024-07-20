@@ -125,3 +125,6 @@ export const removeToken = async (name) => {
 
   export const getUser = (name) =>
   User.findOne({name});
+
+
+  export const getUserById = (id) => User.findById(id);

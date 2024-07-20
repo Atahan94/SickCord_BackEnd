@@ -7,7 +7,7 @@ const createChannel =  async (req, res) => {
       
 
       console.log("ID", id, "name and type" , name, type)
-      const channelİnfo = await  updateServer({id, contents:{$push: { channels:{ name, type }}}})
+      const channelİnfo = await  updateServer(id, {$push: { channels:{ name, type }}})
       
       res.status(200).json({channelİnfo});
       return Promise.resolve();

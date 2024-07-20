@@ -16,11 +16,11 @@ const createChannel =  async (req, res) => {
         arrayFilters: [{ "group._id": groupID }]  // Targeting the group by its ID
       };
 
-      const groupInfo = await updateServer({
+      const groupInfo = await updateServer(
         id,
         contents,
         options
-      });
+      );
   
       
       res.status(200).json({groupInfo}); 

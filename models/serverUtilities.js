@@ -20,9 +20,9 @@ export const channelSchema = new Schema({
     },
     channels: [channelSchema],
   });
-  
 
-  /* const messageSchema = new Schema({
+
+  const messageSchema = new Schema({
     userId: {
       type: Schema.Types.ObjectId,
       ref: 'Users',
@@ -37,4 +37,12 @@ export const channelSchema = new Schema({
       default: Date.now,
     }
   });
-   */
+  
+  export const chatSchema = new Schema({
+    with: {
+      type: Schema.Types.ObjectId,
+      ref: 'Users',
+      required: true,
+    },
+    messages: [messageSchema],
+  });

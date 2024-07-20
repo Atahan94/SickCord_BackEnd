@@ -4,11 +4,11 @@ const deleteGroup =  async (req, res) => {
     try {
       const {id, groupID} = req.params
       
-      const groupInfo = await  updateServer({id, contents:{
+      const groupInfo = await  updateServer(id, {
         $pull: {
           groups: { _id: groupID }
         }
-      }})
+      })
       
       res.status(200).json({groupInfo});
       return Promise.resolve();
