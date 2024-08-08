@@ -6,12 +6,13 @@ import channel from "./channel"
 import group from "./group"
 import getAllMembers from "./getAllmembers";
 import addMember from "./addMember";
+import sessionCheck from "../../auth/protectRoute";
 
 const router = Router();
 
-router.post('/create', create)
+router.post('/create', sessionCheck ,create)
 
-router.get('/getAllServers', getAllServers);
+router.get('/getAllServers', sessionCheck ,getAllServers);
 
 router.delete('/delete/:id', deleteS)
 

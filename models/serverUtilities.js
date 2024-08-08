@@ -1,6 +1,25 @@
 import { Schema } from 'mongoose';
 
-  
+const messageSchema = new Schema({
+  userId: {
+    type: Schema.Types.ObjectId,
+    ref: 'Users',
+    required: true,
+  },
+  text: {
+    type: String,
+    required: true,
+  },
+  hash: {
+    type: String,
+    required: true,
+  },
+  timestamp: {
+    type: Date,
+    default: Date.now,
+  }
+});  
+
 export const channelSchema = new Schema({
     name: {
       type: String,
@@ -11,6 +30,7 @@ export const channelSchema = new Schema({
       enum: ['text', 'voice'],
       default: 'text',
     },
+    messages: [messageSchema],
   });
 
  export const groupSchema = new Schema({
@@ -22,21 +42,6 @@ export const channelSchema = new Schema({
   });
 
 
-  const messageSchema = new Schema({
-    userId: {
-      type: Schema.Types.ObjectId,
-      ref: 'Users',
-      required: true,
-    },
-    text: {
-      type: String,
-      required: true,
-    },
-    timestamp: {
-      type: Date,
-      default: Date.now,
-    }
-  });
   
   export const chatSchema = new Schema({
     with: {

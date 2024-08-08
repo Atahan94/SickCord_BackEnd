@@ -6,7 +6,7 @@ const getChat =  async (req, res) => {
 
       let chats = [...user.privateChats];
 
-      console.log("CHATS", chats);
+     /*  console.log("CHATS", chats); */
       
       const populatedChats = await Promise.all(chats.map(async (chat) => {
         const withUser = await getUserById(chat.with); // Kullanıcıyı ID ile al

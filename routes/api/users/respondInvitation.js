@@ -42,7 +42,7 @@ const respondInvitation = async (req, res) => {
       },
     });
 
-    console.log("RespondInvitation", id, accept, type, name);
+    /* console.log("RespondInvitation", id, accept, type, name); */
     
     res.status(200).json({ message: 'Invitation responded successfully' });
     return Promise.resolve();

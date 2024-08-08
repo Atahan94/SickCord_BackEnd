@@ -5,7 +5,7 @@ const deleteChannel =  async (req, res) => {
       const {id, groupID, channelID} = req.params
       
       
-      console.log("SERVERID", id, "GROUPID", groupID, "CHANNELID", channelID);
+     /*  console.log("SERVERID", id, "GROUPID", groupID, "CHANNELID", channelID); */
       const contents = {
         $pull: {
           "groups.$[group].channels": { _id: channelID }

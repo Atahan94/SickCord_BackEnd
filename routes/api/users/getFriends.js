@@ -8,7 +8,7 @@ const getFriends =  async (req, res) => {
 
       let friends = user.friends.map((el) => { return {id: el._id, name: el.name}})
 
-      console.log("FRİENDS Populated Mapped", friends)
+      /* console.log("FRİENDS Populated Mapped", friends) */
 
       res.status(200).json({res: [...friends]});
       return Promise.resolve();

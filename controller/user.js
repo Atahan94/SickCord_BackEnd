@@ -25,7 +25,7 @@ export const createUser = async ({ name}) => {
 
   export const signUpUser = async ({ name, email, password }) => {
     try {
-      console.log("controller", name, email, password)
+      /* console.log("controller", name, email, password) */
       const user = await User.create({ name, email, password });
       
       return Promise.resolve({
@@ -47,7 +47,7 @@ export const createUser = async ({ name}) => {
         name: user.name,
         email: user.email,
       });
-      console.log("USERR", user.name)
+      /* console.log("USERR", user.name) */
      await updateOrCreateToken(user.name, token);
       return Promise.resolve({
         user: { id: user._id, email: user.email , name: user.name, lastLoggedIn: user.lastLoggedIn },
@@ -72,7 +72,7 @@ export const createUser = async ({ name}) => {
            await Token.create({ name: username, token: newToken });
         }
 
-        console.log('Token işlem tamamlandı');
+        /* console.log('Token işlem tamamlandı'); */
     } catch (error) {
         console.error('Token işlemi sırasında hata:', error);
     }
@@ -112,7 +112,7 @@ export const removeToken = async (name) => {
   }
   export const deleteUserServer = async ({serverId}) => {
     try {
-      console.log(serverId)
+      /* console.log(serverId) */
       await User.updateMany(
         { servers: serverId },
         { $pull: { servers: serverId } }

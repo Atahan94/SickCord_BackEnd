@@ -5,7 +5,7 @@ const editChannel =  async (req, res) => {
       const {id, groupID, channelID} = req.params
       const {name, type} = req.body
       
-      console.log("SERVERID", id, "GROUPID", groupID, "CHANNELID", channelID);
+      /* console.log("SERVERID", id, "GROUPID", groupID, "CHANNELID", channelID); */
       const contents = {
         $set: {
           "groups.$[group].channels.$[channel].name": name,

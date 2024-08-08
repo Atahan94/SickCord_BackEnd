@@ -3,7 +3,7 @@ import { updateServer } from "../../../../controller/server";
 const deleteChannel =  async (req, res) => {
     try {
       const {id, channelID} = req.params
-      console.log("REQUEST name", req.session, "serverID", id)
+      /* console.log("REQUEST name", req.session, "serverID", id) */
       
       await  updateServer(id, { $pull: { channels: { _id: channelID } } })
       

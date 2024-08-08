@@ -6,7 +6,7 @@ const createChannel =  async (req, res) => {
       const {name, type} = req.body
       
 
-      console.log("ID", id, "name and type" , name, type)
+     /*  console.log("ID", id, "name and type" , name, type) */
       const channelİnfo = await  updateServer(id, {$push: { channels:{ name, type }}})
       
       res.status(200).json({channelİnfo});

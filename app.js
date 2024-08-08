@@ -1,8 +1,6 @@
 import express from 'express';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
-//import admin from "./routes/admin"
-//import session from './session';
 import morgan from 'morgan';
 import connectToDb from "./db"
 import multer from 'multer';
@@ -10,15 +8,17 @@ import cors from "cors";
 import auth from "./routes/auth"
 import api from "./routes/api"
 import session from './session';
+import http from 'http';
+import setupSocketIO from './socket/textSocket';
+import { Server } from 'socket.io';
+
 
 
 
 const app = express();
+const server = http.createServer(app);
+
 const __dirname = dirname(fileURLToPath(import.meta.url));
-//const logFile = join(__dirname, 'blogchef.log');
-
-//app.use(upload.single('image'));
-
 app.use(cors({
   origin: 'http://localhost:3001', // React uygulamanızın kökeni
   credentials: true, // Çerez gönderip almak için
@@ -43,7 +43,9 @@ app.use("/", api);
 
 Promise.all([connectToDb()])
   .then(() =>
-    app.listen(3000, () => console.log("SickCord Online"))
+    server.listen(3000, () => {console.log("SickCord Online")
+    setupSocketIO(server);}
+)
   )
   .catch((error) => {
     console.error(`MongoDB Atlas Error: ${error}`);

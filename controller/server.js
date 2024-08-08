@@ -2,7 +2,7 @@ import Server from "../models/Server";
 
 export const createServer = async ({ name, owner}) => {
     try {
-      console.log("NAME SERVER", name)
+      /* console.log("NAME SERVER", name) */
       const server = await Server.create({name, owner,  members: [owner]  });
 
       return Promise.resolve({

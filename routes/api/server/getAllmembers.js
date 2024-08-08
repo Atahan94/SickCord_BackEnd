@@ -15,7 +15,7 @@ const getAllMembers =  async (req, res) => {
         }
       })
 
-      console.log("MEMBERS", members);
+      /* console.log("MEMBERS", members); */
 
       res.status(200).json({res: members});
       return Promise.resolve();

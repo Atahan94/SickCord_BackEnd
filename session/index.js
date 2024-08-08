@@ -14,8 +14,8 @@ export default app => session({
     resave: false,
     saveUninitialized: true,
     cookie: {
-      secure: app.get('env') === 'production' ? true : false,
-      httpOnly: false,
+      secure: app.get('env') === 'production',
+      httpOnly: true,
       maxAge: 18000000, // 5 hours
       sameSite: app.get('env') === 'production' ? 'none' : 'lax'
     },

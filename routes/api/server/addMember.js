@@ -5,7 +5,7 @@ const addMember =  async (req, res) => {
     try {
       const {id, memberName} = req.params; // CREATE END POİNT WHERE İT RETURN ALL MEMBERS OF SERVER OF GIVEN ID ON PARAMS
       
-      console.log("serverID:", id ,"memberID", memberName)
+     /*  console.log("serverID:", id ,"memberID", memberName) */
 
       const server = await getServerById(id);
       const member = await getUser(memberName);
@@ -14,6 +14,14 @@ const addMember =  async (req, res) => {
 
       if (alreadyMember) {
         throw new Error("Already member");
+      }
+
+      const hasInvitation = member.invitations.some(
+        (invitation) => invitation.type === 'server' && invitation.referenceId.equals(server._id)
+      );
+  
+      if (hasInvitation) {
+        throw new Error("Already invited");
       }
 
      
