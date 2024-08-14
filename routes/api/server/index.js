@@ -7,10 +7,14 @@ import group from "./group"
 import getAllMembers from "./getAllmembers";
 import addMember from "./addMember";
 import sessionCheck from "../../auth/protectRoute";
+import multer from "multer";
 
 const router = Router();
 
-router.post('/create', sessionCheck ,create)
+const storage = multer.memoryStorage();
+const upload = multer({ storage });
+
+router.post('/create', sessionCheck, upload.single('image') ,create)
 
 router.get('/getAllServers', sessionCheck ,getAllServers);
 

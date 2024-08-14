@@ -1,4 +1,5 @@
 import { getServerById } from "../../../controller/server";
+import redisClient from "../../../redis/redis-client";
 
 const getAllMembers =  async (req, res) => {
     try {
@@ -14,9 +15,14 @@ const getAllMembers =  async (req, res) => {
           name: el.name
         }
       })
-
-      /* console.log("MEMBERS", members); */
-
+      redisClient.smembers('onlineUsers', (err, users) => {//DİVİDE USERS İNTO ONLİNE AND OFFLİNE
+        if (err) {
+            console.error('Redis error:', err);
+            return callback(err);
+        }
+        console.log("onlineUsers",users) // users is the array of online users
+    });
+     
       res.status(200).json({res: members});
       return Promise.resolve();
     } catch (error) {

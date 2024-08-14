@@ -19,6 +19,10 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
+  image: {
+    data: Buffer,
+    contentType: String,
+  },
   createdAt: { type: Date, default: Date.now },
   lastLoggedIn: { type: Date, default: Date.now },
   servers: [{

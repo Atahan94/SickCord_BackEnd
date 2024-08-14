@@ -3,14 +3,12 @@ import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import morgan from 'morgan';
 import connectToDb from "./db"
-import multer from 'multer';
 import cors from "cors";
 import auth from "./routes/auth"
 import api from "./routes/api"
 import session from './session';
 import http from 'http';
 import setupSocketIO from './socket/textSocket';
-import { Server } from 'socket.io';
 
 
 
@@ -44,7 +42,9 @@ app.use("/", api);
 Promise.all([connectToDb()])
   .then(() =>
     server.listen(3000, () => {console.log("SickCord Online")
-    setupSocketIO(server);}
+    setupSocketIO(server);
+    /* await redisClient.connect(); */
+   }
 )
   )
   .catch((error) => {
