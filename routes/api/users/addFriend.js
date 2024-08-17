@@ -13,7 +13,7 @@ const addFriends =  async (req, res) => {
       const user = await getUser(name);
       
       if (!user) {
-        throw new Error("user doens't exists")
+        throw new Error("User doens't exists")
       }
 
       const alreadyFriends = currentUser.friends.includes(user._id) || user.friends.includes(currentUser._id);

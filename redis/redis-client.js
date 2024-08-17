@@ -1,8 +1,8 @@
 import { createClient } from "redis";
 
 const redisClient = createClient({
-    url: 'redis://127.0.0.1:6379' // Redis server URL
-    // password: 'yourpassword' // Uncomment and set your password if you configured one
+    url: process.env.REDIS_URL || 'redis://127.0.0.1:6379' // Redis server URL
+    
 });
 
 // Handle Redis connection errors

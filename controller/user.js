@@ -47,6 +47,7 @@ export const signUpUser = async ({ name, email, password, image }) => {
 export const loginUser = async ({ email, password }) => {
   try {
     const user = await User.findOne({ email });
+    console.log("Userrrr", user)
     await user.checkPassword(password);
     await user.updateLoggedIn();
     const token = await sign({

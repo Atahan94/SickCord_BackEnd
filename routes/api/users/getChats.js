@@ -10,6 +10,7 @@ const getChat =  async (req, res) => {
       
       const populatedChats = await Promise.all(chats.map(async (chat) => {
         const withUser = await getUserById(chat.with); // Kullanıcıyı ID ile al
+        const base64Image = withUser.image.data.toString('base64');
         return {
           id: chat._id,
           with: {
@@ -19,6 +20,7 @@ const getChat =  async (req, res) => {
             mutualServers: withUser.servers.filter(serverId => user.servers.includes(serverId)),
             createdAt: withUser.createdAt,
           },
+          image: `data:${withUser.image.contentType};base64,${base64Image}`,
           messages: [...chat.messages]
         };
       }));

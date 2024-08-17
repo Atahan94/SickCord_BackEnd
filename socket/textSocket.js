@@ -103,15 +103,28 @@ export function setupSocketIO(server) {
     socket.on("JoinVoiceChannel", (data) => {
       room = data.id;
       socket.join(room);
+      redisClient.sadd(room, username);
+      redisClient.smembers(room, (err, members) => {
+        console.log("members", members);
+        io.to(room).emit("updateMembers", members);
+      });
       console.log(username, "Joined voiceChannel with ID:", room);
     });
+
+    
 
     socket.on("audio", (data) => {
       socket.broadcast.to(room).emit("audio1", data);
     });
 
     socket.on("disconnectRoom", () => {
-      socket.leave(room);
+      redisClient.srem(room, username);
+      redisClient.smembers(room, (err, members) => {
+        console.log("members leave", members);
+        io.to(room).emit("updateMembers", members);
+        socket.leave(room);
+      });
+
       console.log(username, "Left voiceChannel with ID:", room);
     });
 

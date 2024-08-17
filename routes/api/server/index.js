@@ -22,6 +22,7 @@ router.delete('/delete/:id', deleteS)
 
 router.get('/getAllMembers/:id', getAllMembers)
 
+
 router.post('/:id/addMember/:memberName', addMember)
 
 
