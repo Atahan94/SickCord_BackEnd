@@ -18,7 +18,7 @@ const server = http.createServer(app);
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const corsOptions = {
-  origin: "http://localhost:3001",
+  origin: "http://localhost:3000",
   credentials: true, // Allow credentials (cookies, authorization headers, etc.)
   methods: "GET,POST,PUT,DELETE",
   allowedHeaders: "Content-Type,Authorization",
