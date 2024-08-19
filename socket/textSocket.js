@@ -6,7 +6,7 @@ import redisClient from "../redis/redis-client";
 export function setupSocketIO(server) {
   const io = new Server(server, {
     cors: {
-      origin: "http://localhost:3001",
+      origin: "http://localhost:3000",
     },
   });
 
