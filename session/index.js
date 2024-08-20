@@ -9,7 +9,8 @@ const RedisStore = connectRedis(session);
 
 
 export default (app) =>
-  session({
+{  console.log("ENV", app.get("env") === "production", "REDİS CLİENT" ,  redisClient )
+  return session({
     store:/* memoryStore, */
       app.get("env") === "production"
         ? new RedisStore({ client: redisClient })
@@ -24,4 +25,4 @@ export default (app) =>
       maxAge: 18000000, // 5 hours
       sameSite: app.get("env") === "production" ? "none" : "lax",
     },
-  });
+  });}
