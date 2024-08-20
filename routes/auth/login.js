@@ -9,6 +9,7 @@ const login =  async (req, res) => {
         name: user.name,
         email: user.email,
       };
+      console.log("USER", req.session.user, "TOKEN", token)
       res.status(200).json({token, user});
       return Promise.resolve();
     } catch (error) {
