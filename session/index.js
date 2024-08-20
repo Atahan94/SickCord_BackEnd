@@ -9,10 +9,8 @@ const RedisStore = connectRedis(session);
 
 
 export default (app) =>
-{  console.log("ENV", app.get("env") === "production", "REDİS CLİENT" ,  redisClient )
-  return session({
-    store:/* memoryStore, */
-      app.get("env") === "production"
+{  return session({
+    store: app.get("env") === "production"
         ? new RedisStore({ client: redisClient })
         : memoryStore,
     name: "sessId",

@@ -17,13 +17,13 @@ const app = express();
 const server = http.createServer(app);
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const corsOptions = {
+/* const corsOptions = {
   origin: "http://localhost:3000",
   credentials: true, // Allow credentials (cookies, authorization headers, etc.)
   methods: "GET,POST,PUT,DELETE",
   allowedHeaders: "Content-Type,Authorization",
 };
-app.use(cors(corsOptions))
+app.use(cors(corsOptions)) */
 
 /* app.use('/assets', express.static(join(__dirname, 'public')));
 app.use(express.static(join(__dirname, 'public', 'client'))); */

@@ -4,11 +4,11 @@ import { getUser } from "../controller/user";
 import redisClient from "../redis/redis-client";
 
 export function setupSocketIO(server) {
-  const io = new Server(server, {
+  const io = new Server(server/* , {
     cors: {
       origin: "http://localhost:3000",
     },
-  });
+  } */);
 
   io.on("connection", async (socket) => {
     const username = socket.handshake.query.name;
