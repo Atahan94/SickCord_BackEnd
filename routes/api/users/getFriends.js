@@ -4,12 +4,9 @@ import redisClient from "../../../redis/redis-client";
 const getFriends =  async (req, res) => {
     try {
       const user = await getUser(req.session.user.name);
-      
-      await user.populate('friends').execPopulate();
+      console.log("CHECK SESSİON FRİENDS", req.session.user.name);
 
-        /* let friends = user.friends.map((el) => { 
-        const base64Image = el.image.data.toString('base64');
-        return {id: el._id, name: el.name, image: `data:${el.image.contentType};base64,${base64Image}`}}) */
+      await user.populate('friends').execPopulate();
 
       let onlineFriends = [];
       let friends = []
