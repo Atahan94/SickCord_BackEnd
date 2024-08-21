@@ -25,8 +25,9 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 };
 app.use(cors(corsOptions)) */
 
-/* app.use('/assets', express.static(join(__dirname, 'public')));
-app.use(express.static(join(__dirname, 'public', 'client'))); */
+app.use('/assets', express.static(join(__dirname, 'build')));
+app.use(express.static(join(__dirname, 'build')));
+
 app.use(express.urlencoded({ extended: false }));
 app.use(morgan(":method - :url - :date - :response-time ms"));
 app.use(express.json());
