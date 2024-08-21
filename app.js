@@ -31,6 +31,7 @@ app.use(express.static(join(__dirname, 'build')));
 app.use(express.urlencoded({ extended: false }));
 app.use(morgan(":method - :url - :date - :response-time ms"));
 app.use(express.json());
+app.set("trust proxy", 1);
 app.use("/", session(app));
 
 /* app.use('/404', (req, res) => {
