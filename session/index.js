@@ -21,6 +21,5 @@ export default (app) =>
       secure: app.get("env") === "production",
       httpOnly: true,
       maxAge: 18000000, // 5 hours
-      sameSite: app.get("env") === "production" ? "none" : "lax",
     },
   });}
