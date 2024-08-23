@@ -43,6 +43,11 @@ app.use("/", auth);
 app.use("/", api);
 
 
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
+
+
 
 Promise.all([connectToDb()])
   .then(() =>
