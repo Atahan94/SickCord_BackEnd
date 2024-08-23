@@ -1,5 +1,6 @@
 import express from 'express';
-import { join, dirname } from 'path';
+import { join, dirname} from 'path';
+import path from 'path';
 import { fileURLToPath } from 'url';
 import morgan from 'morgan';
 import connectToDb from "./db"
